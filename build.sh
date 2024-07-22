@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# chmod +x build.sh
+
 # Atualiza o sistema
 sudo apt update
 
@@ -28,8 +30,15 @@ else
     echo "Node.js e npm já estão instalados."
 fi
 
-# Adicione outras instalações ou configurações conforme necessário
-# Por exemplo, instalar o Git:
-# sudo apt install -y git
+
+# Instala as dependências do Node.js
+echo "Instalando dependências do Node.js..."
+npm install
+
+# Executa o build e o docker-compose
+echo "Executando o build e o docker-compose..."
+npm run up
+
+echo "Script de configuração concluído."
 
 echo "Script de configuração concluído."
