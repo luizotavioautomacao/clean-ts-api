@@ -34,6 +34,7 @@ fi
 # Instala as dependências do Node.js
 echo "Instalando dependências do Node.js..."
 npm install
+npm audit fix #--force
 
 # Executa o build e o docker-compose
 echo "Executando o build e o docker-compose..."
