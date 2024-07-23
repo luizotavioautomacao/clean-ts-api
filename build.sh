@@ -31,6 +31,11 @@ else
     echo "Node.js e npm já estão instalados."
 fi
 
+# Instala as dependências do Node.js
+echo "Instalando dependências do Node.js..."
+npm install
+npm audit fix #--force
+
 # Instala o Docker se não estiver instalado
 if ! command -v docker &> /dev/null
 then
@@ -86,12 +91,21 @@ else
     echo "Docker Compose já está instalado."
 fi
 
-# Instala as dependências do Node.js
-echo "Instalando dependências do Node.js..."
-npm install
-npm audit fix #--force
+# Adiciona o usuário ao grupo docker
+if ! groups $USER | grep -q '\bdocker\b'; then
+    echo "Adicionando o usuário $USER ao grupo docker..."
+    sudo usermod -aG docker $USER
 
-echo "Script de configuração concluído."
-# Executa o build e o docker-compose
-echo "Executando o build e o docker-compose..."
-npm run up
+    # Solicita ao usuário que faça logout e login novamente
+    echo "O usuário $USER foi adicionado ao grupo docker."
+    echo "O sistema será reiniciado para que as alterações tenham efeito."
+    
+    # Reinicia o sistema
+    echo "Script de configuração concluído. A máquina precisa ser reiniciada!"
+    sudo reboot
+else
+    echo "O usuário $USER já está no grupo docker."
+    echo "Executando o build e o docker-compose..."
+    npm run up
+fi
+
