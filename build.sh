@@ -91,6 +91,9 @@ else
     echo "Docker Compose já está instalado."
 fi
 
+#instalar certbot => https://certbot.eff.org/instructions?ws=other&os=ubuntufocal
+sudo apt install certbot
+
 # Adiciona o usuário ao grupo docker
 if ! groups $USER | grep -q '\bdocker\b'; then
     echo "Adicionando o usuário $USER ao grupo docker..."
@@ -98,14 +101,13 @@ if ! groups $USER | grep -q '\bdocker\b'; then
 
     # Solicita ao usuário que faça logout e login novamente
     echo "O usuário $USER foi adicionado ao grupo docker."
-    echo "O sistema será reiniciado para que as alterações tenham efeito."
+    echo "Script de configuração concluído."
     
     # Reinicia o sistema
-    echo "Script de configuração concluído. A máquina precisa ser reiniciada!"
+    echo "O sistema será reiniciado para que as alterações tenham efeito."
     sudo reboot
 else
     echo "O usuário $USER já está no grupo docker."
-    echo "Executando o build e o docker-compose..."
-    npm run up
+    echo "Execute o Makefile!"
 fi
 
