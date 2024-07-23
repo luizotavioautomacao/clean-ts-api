@@ -4,5 +4,5 @@ up:
 	npm run up
 down:
 	docker-compose down
-server-log:
+log-server:
 	docker logs -f api-container

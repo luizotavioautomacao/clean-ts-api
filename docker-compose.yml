@@ -19,6 +19,7 @@ services:
     volumes:
       - ./dist/:/usr/src/clean-node-api/dist/
       - ./package.json:/usr/src/clean-node-api/package.json
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "443:443"
       - "9222:9222"
