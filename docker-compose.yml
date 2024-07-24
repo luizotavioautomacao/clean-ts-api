@@ -20,6 +20,7 @@ services:
       - ../${FRONT_END}/dist:/usr/src/${FRONT_END}/dist
       - ./dist/:/usr/src/clean-node-api/dist/
       - ./package.json:/usr/src/clean-node-api/package.json
+      - ./.env:/usr/src/clean-node-api/.env
       - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "443:443"
