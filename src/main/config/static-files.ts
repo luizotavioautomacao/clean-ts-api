@@ -7,5 +7,6 @@ const root = join(__dirname, `../${process.env.FRONT_END}/dist`)
 export default (app: Express): void => {
   app.use('/static', express.static(resolve(__dirname, '../../static')))
   app.use(express.static(root))
+  console.log('root:', root)
   app.use(fallback('index.html', { root }))
 }
