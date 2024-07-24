@@ -17,6 +17,7 @@ services:
     environment:
       - MONGO_URL=mongodb://mongo:27017/clean-node-api
     volumes:
+      - ../${FRONT_END}/dist:/usr/${FRONT_END}/dist
       - ./dist/:/usr/src/clean-node-api/dist/
       - ./package.json:/usr/src/clean-node-api/package.json
       - /etc/letsencrypt:/etc/letsencrypt

@@ -1,9 +1,9 @@
 import 'module-alias/register'
 import env from '@/main/config/env'
 import { MongoHelper } from '@/infra/db'
-import https from 'https';
-import fs from 'fs';
-import express from 'express';
+import https from 'https'
+import fs from 'fs'
+import 'dotenv/config'
 
 const options = {
   key: fs.readFileSync('/etc/letsencrypt/live/gotech.education/privkey.pem'),
