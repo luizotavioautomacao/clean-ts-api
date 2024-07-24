@@ -1,6 +1,6 @@
 import express, { Express } from 'express'
 import { resolve, join } from 'path'
-import fallback from 'express-history-api-fallback'
+const fallback = require('express-history-api-fallback')
 
 const root = join(__dirname, `../${process.env.FRONT_END}/dist`)
 
