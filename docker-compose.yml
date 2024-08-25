@@ -7,7 +7,7 @@ services:
     volumes:
       - ./data:/data/db
     ports:
-      - "27017:27017"
+      - "${PORT_MONGO_DB}:${PORT_MONGO_DB}"
   api:
     container_name: api-container
     image: node:12
@@ -23,8 +23,8 @@ services:
       - ./.env:/usr/src/clean-node-api/.env
       - /etc/letsencrypt:/etc/letsencrypt
     ports:
-      - "443:443"
-      - "80:80"
-      - "9222:9222"
+      - "${PORT_BACK_END}:${PORT_BACK_END}"
+      - "${PORT_FRONT_END}:${PORT_FRONT_END}"
+      - "${PORT_DEBUG}:${PORT_DEBUG}"
     links:
       - mongo
