@@ -1,13 +1,13 @@
 version: "3"
 services:
-  mongo:
+  mongo_service:
     container_name: mongo-container
     image: mongo:3
     restart: always
     volumes:
       - ./data:/data/db
     ports:
-      - "${PORT_MONGO_DB}:${PORT_MONGO_DB}"
+      - "${MONGO_PORT}:${MONGO_PORT}"
   api:
     container_name: api-container
     image: node:12
@@ -15,16 +15,16 @@ services:
     restart: always
     command: bash -c "npm install --only=prod && npm run debug"
     environment:
-      - MONGO_URL=mongodb://mongo:27017/clean-node-api
+      - MONGO_URL=mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongo_service:${MONGO_PORT}/${MONGO_DB_NAME}
     volumes:
       - ../${FRONT_END}/dist:/usr/src/${FRONT_END}/dist
       - ./dist/:/usr/src/clean-node-api/dist/
       - ./package.json:/usr/src/clean-node-api/package.json
       - ./.env:/usr/src/clean-node-api/.env
-      - /etc/letsencrypt:/etc/letsencrypt
+      - ${SSL}:${SSL}
     ports:
       - "${PORT_BACK_END}:${PORT_BACK_END}"
       - "${PORT_FRONT_END}:${PORT_FRONT_END}"
       - "${PORT_DEBUG}:${PORT_DEBUG}"
     links:
-      - mongo
+      - mongo_service

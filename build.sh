@@ -92,7 +92,7 @@ else
 fi
 
 #instalar certbot => https://certbot.eff.org/instructions?ws=other&os=ubuntufocal
-sudo apt install certbot
+sudo apt install certbot # SSL
 
 # Adiciona o usuário ao grupo docker
 if ! groups $USER | grep -q '\bdocker\b'; then
