@@ -16,3 +16,5 @@ backup:
 	chomd +x sh/mongo-backup.sh && sh/mongo-backup.sh
 mongo_up:
 	docker-compose up -d mongo_service
+mongo_setup:
+	chomd +x sh/mongo-setup.sh && sh/mongo-setup.sh

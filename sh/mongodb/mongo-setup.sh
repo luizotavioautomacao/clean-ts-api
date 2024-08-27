@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# create user admin
 set -e
 
 mongo -u $MONGO_USER -p $MONGO_PASSWORD <<EOF
