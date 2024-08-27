@@ -14,3 +14,5 @@ restore:
 	chomd +x sh/mongo-restore.sh && sh/mongo-restore.sh
 backup:
 	chomd +x sh/mongo-backup.sh && sh/mongo-backup.sh
+mongo_up:
+	docker-compose up -d mongo_service
