@@ -7,6 +7,6 @@ source .env ## to read .env file
 # docker-compose up -d mongo
 # sleep 10
 
-docker exec -it mongo_service mongorestore --batchSize=10 -u $MONGO_USER -p $MONGO_PASSWORD --db $MONGO_DB_NAME $MONGO_BACKUP_FOLDER --drop # backup into container
+docker exec -it mongo-container mongorestore --batchSize=10 -u $MONGO_USER -p $MONGO_PASSWORD --db $MONGO_DB_NAME $MONGO_BACKUP_FOLDER --drop # backup into container
 
 # docker-compose down
