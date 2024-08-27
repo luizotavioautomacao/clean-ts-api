@@ -11,10 +11,10 @@ shell:
 mongo: # mongod
 	docker exec -it mongo-container /bin/sh
 restore:
-	chmod +x sh/mongo-restore.sh && sh/mongo-restore.sh
+	chmod +x sh/mongo/restore.sh && sh/mongo/restore.sh
 backup:
-	chmod +x sh/mongo-backup.sh && sh/mongo-backup.sh
+	chmod +x sh/mongo/backup.sh && sh/mongo/backup.sh
+mongo_setup:
+	chmod +x sh/mongo/setup.sh && sh/mongo/setup.sh
 mongo_up:
 	docker-compose up -d mongo_service
-mongo_setup:
-	chmod +x sh/mongo-setup.sh && sh/mongo-setup.sh
