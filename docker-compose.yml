@@ -6,7 +6,7 @@ services:
     restart: always
     volumes:
       - ./data:/data/db
-      - /home/ubuntu/workspace/backup/database_v2:/backup/database_v2
+      - /home/ubuntu/backup/database_v2:/backup/database_v2
     ports:
       - "${MONGO_PORT}:${MONGO_PORT}"
   api:
