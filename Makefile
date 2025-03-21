@@ -18,3 +18,5 @@ mongo_setup:
 	chmod +x sh/mongo/setup.sh && sh/mongo/setup.sh
 mongo_up:
 	docker-compose up -d mongo_service
+server:
+	docker exec -it api-container /bin/sh
